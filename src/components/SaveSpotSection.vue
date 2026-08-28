@@ -1,5 +1,5 @@
 <script setup>
-import saveSpotJpg from '../assets/images/photo-4.jpg'
+import saveSpotJpg from '../assets/images/photo-4.webp'
 
 function scrollToRegister() {
   document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })

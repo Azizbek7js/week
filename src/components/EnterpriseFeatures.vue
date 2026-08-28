@@ -1,13 +1,13 @@
 <script setup>
-import Sandbox from '../assets/images/Sandbox.svg'
-import exchange from '../assets/images/currency-exchange.svg'
-import taxRefund from '../assets/images/tax-refund.svg'
-import fileFolder from '../assets/images/file-folder.svg'
-import databaseConnection from '../assets/images/database-connection.svg'
-import Government from '../assets/images/services.svg'
-import digitalBrain from '../assets/images/digital-brain.svg'
-import earningsReport from '../assets/images/earnings-report.svg'
-import globalNetwork from '../assets/images/global-network.svg'
+import Sandbox from '../assets/images/Sandbox.webp'
+import exchange from '../assets/images/currency-exchange.webp'
+import taxRefund from '../assets/images/tax-refund.webp'
+import fileFolder from '../assets/images/file-folder.webp'
+import databaseConnection from '../assets/images/database-connection.webp'
+import Government from '../assets/images/services.webp'
+import digitalBrain from '../assets/images/digital-brain.webp'
+import earningsReport from '../assets/images/earnings-report.webp'
+import globalNetwork from '../assets/images/global-network.webp'
 
 const features = [
   { title: 'Regulatory Sandbox', desc: 'Legally protected testing environment for new business models and frontier technologies.' },

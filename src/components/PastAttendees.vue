@@ -2,24 +2,24 @@
 import { computed } from 'vue'
 
 // Confident name-matches (file name clearly maps to the brand):
-import Plug from '../assets/images/Plug.svg'
-import Mit from '../assets/images/Mit.svg'
-import Google from '../assets/images/Google.svg'
-import Aws from '../assets/images/aws.svg'
-import Dealroom from '../assets/images/Dealroom.svg'
-import Domino from '../assets/images/domino.svg'
-import Accesa from '../assets/images/Accesa.svg'
-import Salesforce from '../assets/images/Salesforce.svg'
-import ey from '../assets/images/ey.svg'
-import GLOBAL from '../assets/images/GLOBAL.svg'
-import gbtp from '../assets/images/gbtp.svg'
-import polyavalent from '../assets/images/polyavalent.svg'
+import Plug from '../assets/images/Plug.webp'
+import Mit from '../assets/images/Mit.webp'
+import Google from '../assets/images/Google.webp'
+import Aws from '../assets/images/aws.webp'
+import Dealroom from '../assets/images/Dealroom.webp'
+import Domino from '../assets/images/domino.webp'
+import Accesa from '../assets/images/Accesa.webp'
+import Salesforce from '../assets/images/Salesforce.webp'
+import ey from '../assets/images/ey.webp'
+import GLOBAL from '../assets/images/GLOBAL.webp'
+import gbtp from '../assets/images/gbtp.webp'
+import polyavalent from '../assets/images/polyavalent.webp'
 
 // Generic Figma export names — best-guess mapping, please verify these four:
-import Group from '../assets/images/Group.svg' // guessed: web summit
-import Startup from '../assets/images/Startup.svg' // guessed: StartupBlink
-import Container from '../assets/images/Container.svg' // guessed: Startup Genome
-import svgexport from '../assets/images/svgexport.svg' // guessed: Sturgeon Capital
+import Group from '../assets/images/Group.webp' // guessed: web summit
+import Startup from '../assets/images/Startup.webp' // guessed: StartupBlink
+import Container from '../assets/images/Container.webp' // guessed: Startup Genome
+import svgexport from '../assets/images/svgexport.webp' // guessed: Sturgeon Capital
 
 // NOTE: no imported file for "Alchemist Accelerator", "Golden Gate Ventures",
 // "SPS Commerce" — export these three from Figma and add them below to
@@ -72,11 +72,10 @@ const rows = computed(() => {
               :style="{ '--cols': row.length }"
           >
             <li v-for="logo in row" :key="logo.name" class="attendees__logo">
-              <img
+              <img loading="lazy"
                   v-if="logo.src"
                   :src="logo.src"
                   :alt="logo.name"
-                  loading="lazy"
                   decoding="async"
                   width="120"
                   height="32"

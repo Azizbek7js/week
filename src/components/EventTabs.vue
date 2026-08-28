@@ -1,23 +1,23 @@
 <script setup>
 import { computed, ref } from 'vue'
-import enterpriseImg from '../assets/images/Event_image.png'
-import serviceImg from '../assets/images/Event_image.png'
-import gamedevImg from '../assets/images/photo-16.png'
-import aiNativeImg from '../assets/images/photo-17.jpg'
-import startup1 from '../assets/images/photo-5.png'
-import startup2 from '../assets/images/photo-6.png'
-import startup3 from '../assets/images/photo-7.jpg'
-import startup4 from '../assets/images/photo-8.png'
-import startup5 from '../assets/images/photo-9.jpg'
-import bridge1 from '../assets/images/photo-10.jpg'
-import bridge2 from '../assets/images/photo-11.jpg'
-import bridge3 from '../assets/images/photo-12.jpg'
-import bridge4 from '../assets/images/photo-13.png'
-import bridge5 from '../assets/images/photo-14.jpg'
-import Cursor from '../assets/images/Cursor.svg'
+import enterpriseImg from '../assets/images/Event_image.webp'
+import serviceImg from '../assets/images/Event_image.webp'
+import gamedevImg from '../assets/images/photo-16.webp'
+import aiNativeImg from '../assets/images/photo-17.webp'
+import startup1 from '../assets/images/photo-5.webp'
+import startup2 from '../assets/images/photo-6.webp'
+import startup3 from '../assets/images/photo-7.webp'
+import startup4 from '../assets/images/photo-8.webp'
+import startup5 from '../assets/images/photo-9.webp'
+import bridge1 from '../assets/images/photo-10.webp'
+import bridge2 from '../assets/images/photo-11.webp'
+import bridge3 from '../assets/images/photo-12.webp'
+import bridge4 from '../assets/images/photo-13.webp'
+import bridge5 from '../assets/images/photo-14.webp'
+import Cursor from '../assets/images/Cursor.webp'
 
 // NOTE: `serviceImg` va `enterpriseImg` hozircha bir xil placeholder
-// (Event_image.png) fayldan import qilinyapti. Har ikkalasi uchun
+// (Event_image.webp) fayldan import qilinyapti. Har ikkalasi uchun
 // `imageOverlay` matni (sarlavha/tavsif/tugma) rasm ustiga chiziladi —
 // asl rasm fayllarini almashtirsangiz ham overlay o'zgarishsiz qoladi.
 

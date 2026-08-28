@@ -1,13 +1,13 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import heroVideo from '../assets/images/video.mp4'
-import photo1 from '../assets/images/photo-1.jpg'
-import photo2 from '../assets/images/photo-2.png'
-import photo3 from '../assets/images/photo-3.png'
-import StartupBlink from '../assets/images/StartupBlink.svg'
-import Vector from '../assets/images/Vector.svg'
-import Uzum from '../assets/images/uzum.svg'
-import TbcBank from '../assets/images/tbc.svg'
+import photo1 from '../assets/images/photo-1.webp'
+import photo2 from '../assets/images/photo-2.webp'
+import photo3 from '../assets/images/photo-3.webp'
+import StartupBlink from '../assets/images/StartupBlink.webp'
+import Vector from '../assets/images/Vector.webp'
+import Uzum from '../assets/images/uzum.webp'
+import TbcBank from '../assets/images/tbc.webp'
 
 const EVENT_DATE = new Date('2026-10-01T00:00:00Z') // UTC time
 const days = ref(0)

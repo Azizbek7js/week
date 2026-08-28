@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import logo from '../assets/images/logo.svg'
+import logo from '../assets/images/logo.webp'
 
 const links = ['Home', 'Program', 'Partners', 'Incentives']
 const menuOpen = ref(false)
@@ -33,6 +33,7 @@ function scrollToRegister() {
             alt="ICT Week logo"
             width="67"
             height="42"
+            loading="lazy"
             fetchpriority="high"
             decoding="async"
         />

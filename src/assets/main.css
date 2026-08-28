@@ -59,7 +59,7 @@ body {
                   rgba(0, 78, 92, 0.12),
                   rgba(18, 27, 38, 0.22)
           ),
-          url('../assets/images/background.png') center top / 100% auto no-repeat;
+          url('../assets/images/background.webp') center top / 100% auto no-repeat;
   background-size: cover;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;

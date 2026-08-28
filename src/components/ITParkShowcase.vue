@@ -2,52 +2,52 @@
 import { ref, computed } from 'vue'
 
 // Shared header logos
-import Group848 from '../assets/images/Group-848.svg'
-import Group849 from '../assets/images/Group-849.svg'
+import Group848 from '../assets/images/Group-848.webp'
+import Group849 from '../assets/images/Group-849.webp'
 
 // Slide 1 — Digital Startups Program
-import startupBaseIcon from '../assets/images/startupBase.svg'
-import QRcode from '../assets/images/QRcode.svg'
-import metric from '../assets/images/metric-container.svg'
+import startupBaseIcon from '../assets/images/startupBase.webp'
+import QRcode from '../assets/images/QRcode.webp'
+import metric from '../assets/images/metric-container.webp'
 
 // Slide 2 — Key Indicators of IT Park Members
-import exportGeography from '../assets/images/exportGeography.svg'
-import typeOfExport from '../assets/images/typeOfExport.svg'
-import Revenue from '../assets/images/Revenue.svg'
-import numberCompanies from '../assets/images/numberCompanies.svg'
-import ForeignCapital from '../assets/images/ForeignCapital.svg'
-import RevenueMembers from '../assets/images/RevenueMembers.svg'
+import exportGeography from '../assets/images/exportGeography.webp'
+import typeOfExport from '../assets/images/typeOfExport.webp'
+import Revenue from '../assets/images/Revenue.webp'
+import numberCompanies from '../assets/images/numberCompanies.webp'
+import ForeignCapital from '../assets/images/ForeignCapital.webp'
+import RevenueMembers from '../assets/images/RevenueMembers.webp'
 
 // Slide 3 — Enterprise Uzbekistan
-import Sandbox from '../assets/images/Sandbox.svg'
-import exchange from '../assets/images/currency-exchange.svg'
-import taxRefund from '../assets/images/tax-refund.svg'
-import fileFolder from '../assets/images/file-folder.svg'
-import databaseConnection from '../assets/images/database-connection.svg'
-import Government from '../assets/images/services.svg'
-import digitalBrain from '../assets/images/digital-brain.svg'
-import earningsReport from '../assets/images/earnings-report.svg'
-import globalNetwork from '../assets/images/global-network.svg'
+import Sandbox from '../assets/images/Sandbox.webp'
+import exchange from '../assets/images/currency-exchange.webp'
+import taxRefund from '../assets/images/tax-refund.webp'
+import fileFolder from '../assets/images/file-folder.webp'
+import databaseConnection from '../assets/images/database-connection.webp'
+import Government from '../assets/images/services.webp'
+import digitalBrain from '../assets/images/digital-brain.webp'
+import earningsReport from '../assets/images/earnings-report.webp'
+import globalNetwork from '../assets/images/global-network.webp'
 
 // Slide 4 — Digital Service and Products Export Development
-import FreeOfficeIcon from '../assets/images/FreeOffice.svg'
-import Technical from '../assets/images/Technical.svg'
-import farmImage from '../assets/images/farmImage.svg'
-import RegistrationIcon from '../assets/images/Registration.svg'
-import Banking from '../assets/images/Banking.svg'
-import Turnkey from '../assets/images/Turnkey.svg'
-import Talent from '../assets/images/Talent.svg'
-import ITVISALOGO from '../assets/images/it-visa.svg'
-import noWork from '../assets/images/noWork.svg'
-import salary from '../assets/images/salary.svg'
-import Dividends from '../assets/images/Dividends.svg'
-import datavoltlogo from '../assets/images/datavoltlogo.png'
-import us from '../assets/images/us.png'
-import ger from '../assets/images/ger.png'
-import sa from '../assets/images/sa.png'
-import ci from '../assets/images/ci.png'
-import kr from '../assets/images/sk.png'
-import jp from '../assets/images/jp.png'
+import FreeOfficeIcon from '../assets/images/FreeOffice.webp'
+import Technical from '../assets/images/Technical.webp'
+import farmImage from '../assets/images/farmImage.webp'
+import RegistrationIcon from '../assets/images/Registration.webp'
+import Banking from '../assets/images/Banking.webp'
+import Turnkey from '../assets/images/Turnkey.webp'
+import Talent from '../assets/images/Talent.webp'
+import ITVISALOGO from '../assets/images/it-visa.webp'
+import noWork from '../assets/images/noWork.webp'
+import salary from '../assets/images/salary.webp'
+import Dividends from '../assets/images/Dividends.webp'
+import datavoltlogo from '../assets/images/datavoltlogo.webp'
+import us from '../assets/images/us.webp'
+import ger from '../assets/images/ger.webp'
+import sa from '../assets/images/sa.webp'
+import ci from '../assets/images/ci.webp'
+import kr from '../assets/images/sk.webp'
+import jp from '../assets/images/jp.webp'
 
 /* -------------------------------------------------------------------- */
 /*  Slide 1 data — Digital Startups Program                             */
@@ -149,7 +149,6 @@ const extraCards = [
   { title: 'Fast-track construction', text: 'Accelerated Design-Procure-Build with streamlined land allocation in region' },
   { title: 'Direct international payments', text: 'Cross-border transactions without local bank intermediaries' }
 ]
-
 /* -------------------------------------------------------------------- */
 /*  Carousel logic                                                       */
 /* -------------------------------------------------------------------- */
@@ -272,10 +271,9 @@ const activeSlide = computed(() => slides[current.value])
                 </article>
               </div>
             </div>
-
-            <!-- ============ SLIDE 4 — DIGITAL SERVICE EXPORT ============ -->
             <div v-else class="export">
-              <div class="export__grid">
+              <!-- Top row: Benefits | Zero Risk | Energy -->
+              <div class="export__grid export__grid--top">
                 <div class="export__box">
                   <h3>BENEFITS FOR IT PARK MEMBER COMPANIES</h3>
                   <ul class="export__benefits">
@@ -289,26 +287,58 @@ const activeSlide = computed(() => slides[current.value])
                 <div class="export__box">
                   <h3>ZERO RISK EXPENSE REIMBURSEMENT</h3>
                   <div class="export__reimburse">
-                    <p v-for="z in zeroRisk" :key="z.text"><img :src="z.icon" :alt="z.text" /><span>{{ z.text }}</span></p>
+                    <p v-for="z in zeroRisk" :key="z.text">
+                      <img :src="z.icon" :alt="z.text" />
+                      <span>{{ z.text }}</span>
+                    </p>
                   </div>
                 </div>
 
                 <div class="export__box export__box--energy">
-                  <img :src="farmImage" alt="Map of Uzbekistan energy infrastructure" class="export__energy-map" />
-                  <div class="export__energy-stats">
-                    <p v-for="e in energyStats" :key="e.value">
-                      <span class="export__energy-tag">{{ e.tag }}</span>
-                      <strong>{{ e.value }}</strong>
-                      <span>{{ e.label }}</span>
-                    </p>
+                  <div class="export__energy-top">
+                    <img :src="farmImage" alt="Map of Uzbekistan energy infrastructure" class="export__energy-map" />
+
+                    <div class="export__energy-stats">
+                      <div class="export__energy-stat">
+                        <div class="export__energy-stat-main">
+                          <strong>9.3 GW</strong>
+                          <span class="export__energy-tag">Wind farms</span>
+                        </div>
+                        <p>Major green, wind-powered energy capacity</p>
+                      </div>
+
+                      <div class="export__energy-stat">
+                        <div class="export__energy-stat-main">
+                          <strong>1 885 km</strong>
+                          <span class="export__energy-tag">Electricity grid</span>
+                        </div>
+                        <p>Extensive high-voltage transmission network</p>
+                      </div>
+                    </div>
                   </div>
+
                   <h3 class="export__special-title">SPECIAL TERMS</h3>
-                  <ul class="export__special">
-                    <li v-for="s in specialTerms" :key="s.value"><strong>{{ s.value }}</strong> {{ s.text }}</li>
-                  </ul>
+
+                  <div class="export__special">
+                    <div class="export__special-item">
+                      <span class="export__special-dot"></span>
+                      <div>
+                        <strong>$0.05 kWh</strong>
+                        <span>Competitive electricity rate</span>
+                      </div>
+                    </div>
+                    <div class="export__special-item">
+                      <span class="export__special-dot"></span>
+                      <div>
+                        <strong>$0.08-$0.12</strong>
+                        <span>Low-cost water supply</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
+              <!-- Middle row: Fast-track | Direct payments -->
               <div class="export__grid export__grid--extra">
                 <div v-for="c in extraCards" :key="c.title" class="export__box export__box--extra">
                   <h3>{{ c.title }}</h3>
@@ -316,27 +346,49 @@ const activeSlide = computed(() => slides[current.value])
                 </div>
               </div>
 
+              <!-- Bottom row: Softlanding | IT-VISA | DataVolt -->
               <div class="export__grid export__grid--bottom">
                 <div class="export__box">
                   <h3>SOFTLANDING SUPPORT</h3>
                   <ul class="export__list">
-                    <li v-for="s in softlanding" :key="s.text"><img :src="s.icon" :alt="s.text" /><span>{{ s.text }}</span></li>
+                    <li v-for="s in softlanding" :key="s.text">
+                      <img :src="s.icon" :alt="s.text" />
+                      <span>{{ s.text }}</span>
+                    </li>
                   </ul>
                 </div>
+
                 <div class="export__box">
-                  <h3><img :src="ITVISALOGO" alt="IT-Visa" class="export__itvisa-logo" />IT-VISA <span class="export__powered">powered by IT Park</span></h3>
+                  <h3 class="export__itvisa-title">
+                    <img :src="ITVISALOGO" alt="IT-Visa" class="export__itvisa-logo" />
+                    IT-VISA
+                    <span class="export__powered">powered by IT Park</span>
+                  </h3>
                   <ul class="export__list">
-                    <li v-for="v in itVisaList" :key="v.text"><img :src="v.icon" :alt="v.text" /><span>{{ v.text }}</span></li>
+                    <li v-for="v in itVisaList" :key="v.text">
+                      <img :src="v.icon" :alt="v.text" />
+                      <span>{{ v.text }}</span>
+                    </li>
                   </ul>
                 </div>
+
                 <div class="export__box export__box--datavolt">
-                  <p class="export__datavolt-lead">Turn your Data Center into the cutting edge infrastructure for AI &amp; MINING</p>
+                  <p class="export__datavolt-lead">
+                    Turn your Data Center into the cutting edge infrastructure for AI &amp; MINING
+                  </p>
                   <div class="export__datavolt-stats">
-                    <span><img :src="datavoltlogo" alt="Datavolt" class="export__datavolt-logo" /> capacity 500+ MW</span>
+        <span>
+          <img :src="datavoltlogo" alt="Datavolt" class="export__datavolt-logo" />
+          capacity 500+ MW
+        </span>
                     <span><strong>$6.5B</strong> investment</span>
                   </div>
-                  <p class="export__datavolt-invest"><strong>$100M+</strong> Investment in AI infrastructure</p>
-                  <p class="export__no-tax">NO CUSTOMS &amp; VAT — imported servers/GPUs exempt from taxes</p>
+                  <p class="export__datavolt-invest">
+                    <strong>$100M+</strong> Investment in AI infrastructure
+                  </p>
+                  <p class="export__no-tax">
+                    NO CUSTOMS &amp; VAT — imported servers/GPUs exempt from taxes
+                  </p>
                 </div>
               </div>
             </div>
@@ -801,5 +853,118 @@ const activeSlide = computed(() => slides[current.value])
   }
   .indicators__box--geo ul { grid-template-columns: 1fr 1fr; }
   .features__grid { grid-template-columns: 1fr; }
+}
+/* ===== Energy box — Figma match ===== */
+.export__box--energy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.export__energy-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.export__energy-map {
+  width: 110px;
+  height: 90px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.export__energy-stats {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.export__energy-stat-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.export__energy-stat strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-2);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.export__energy-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent-2);
+  background: rgba(62, 224, 138, 0.15);
+  border: 1px solid rgba(62, 224, 138, 0.25);
+  border-radius: 20px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.export__energy-stat p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.35;
+}
+
+/* SPECIAL TERMS */
+.export__special-title {
+  font-size: 13px !important;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin: 2px 0 0 !important;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.export__special {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.export__special-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: rgba(62, 224, 138, 0.08);
+  border: 1px solid rgba(62, 224, 138, 0.2);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.export__special-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.export__special-item strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-2);
+  line-height: 1.25;
+}
+
+.export__special-item span {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.3;
+  margin-top: 2px;
 }
 </style>

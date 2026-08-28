@@ -1,13 +1,13 @@
 <script setup>
 import { computed } from 'vue'
 
-import Aws from '../assets/images/aws.svg'
-import StarupWorld from "../assets/images/StarupWorld.svg"
-import Startup from '../assets/images/Startup.svg';
-import difc from "../assets/images/difc.svg";
-import Pegasus from "../assets/images/pegasus.svg";
-import jetro from "../assets/images/jetro.svg";
-import ignyte from "../assets/images/ignyte.svg";
+import Aws from '../assets/images/aws.webp'
+import StarupWorld from "../assets/images/StarupWorld.webp"
+import Startup from '../assets/images/Startup.webp';
+import difc from "../assets/images/difc.webp";
+import Pegasus from "../assets/images/pegasus.webp";
+import jetro from "../assets/images/jetro.webp";
+import ignyte from "../assets/images/ignyte.webp";
 const logos = [
   { name: 'AWS', src: Aws },
   { name: 'StartupBlink', src: Startup },
