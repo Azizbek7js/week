@@ -9,6 +9,7 @@ const lang = ref('English')
 
 function toggleMenu() {
   menuOpen.value = !menuOpen.value
+  if (!menuOpen.value) langOpen.value = false   // close lang when menu closes
 }
 function toggleLang() {
   langOpen.value = !langOpen.value
@@ -21,6 +22,7 @@ function selectLang(value) {
 function scrollToRegister() {
   document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })
   menuOpen.value = false
+  langOpen.value = false
 }
 </script>
 
@@ -53,7 +55,7 @@ function scrollToRegister() {
 
         <div class="header__mobile-actions">
           <div class="header__lang">
-            <button type="button" class="header__lang-btn" @click="toggleLang">
+            <button type="button" class="header__lang-btn" @click="toggleLang" :aria-expanded="langOpen">
               {{ lang }}
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -86,7 +88,13 @@ function scrollToRegister() {
         <button type="button" class="btn btn-primary" @click="scrollToRegister">Register now</button>
       </div>
 
-      <button type="button" class="header__burger" @click="toggleMenu" :aria-expanded="menuOpen" aria-label="Toggle menu">
+      <button
+          type="button"
+          class="header__burger"
+          @click="toggleMenu"
+          :aria-expanded="menuOpen"
+          aria-label="Toggle menu"
+      >
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -99,7 +107,7 @@ function scrollToRegister() {
   top: 0;
   z-index: 50;
   padding: 20px 0;
-  contain: layout paint style;
+  /* removed contain – it was clipping the fixed mobile menu */
 }
 
 .header__bar {
@@ -151,8 +159,6 @@ function scrollToRegister() {
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* Figma spec: radius 130px, border 0.94px, padding 16/24/16/24,
-   dark base fill (#01141A) with a soft mint radial glow, mint gradient border. */
 .header__link.is-active {
   padding: 16px 24px;
   border-radius: 130px;
@@ -163,15 +169,6 @@ function scrollToRegister() {
   background-clip: padding-box;
   color: #ffffff;
   font-weight: 600;
-}
-.header__link.is-active::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
 }
 
 .header__desktop-actions {
@@ -216,7 +213,7 @@ function scrollToRegister() {
   padding: 6px;
   min-width: 130px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-  z-index: 60;
+  z-index: 70;                 /* higher than nav */
 }
 .header__lang-menu button {
   width: 100%;
@@ -253,6 +250,18 @@ function scrollToRegister() {
   width: 16px;
   margin: 0 auto;
   background: var(--text);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* optional: burger → X animation */
+.header__burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header__burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.header__burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 900px) {
@@ -260,35 +269,47 @@ function scrollToRegister() {
     width: 100%;
     padding: 8px 8px 8px 16px;
   }
+
   .header__desktop-actions {
     display: none;
   }
+
   .header__burger {
     display: flex;
   }
+
   .header__nav {
     position: fixed;
-    inset: 78px 12px auto 12px;
+    top: 78px;                 /* adjust if your header height differs */
+    left: 12px;
+    right: 12px;
+    bottom: auto;
     flex-direction: column;
     align-items: stretch;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: 14px;
+    z-index: 60;               /* important – was missing */
     transform: translateY(-12px);
     opacity: 0;
+    visibility: hidden;        /* extra safety */
     pointer-events: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease, visibility 0.2s;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
   }
+
   .header__nav.is-open {
-    will-change: transform, opacity;
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
   }
+
   .header__link {
     padding: 12px 14px;
   }
+
   .header__mobile-actions {
     display: flex;
     align-items: center;
@@ -297,6 +318,12 @@ function scrollToRegister() {
     margin-top: 8px;
     padding-top: 10px;
     border-top: 1px solid var(--border);
+  }
+
+  /* language dropdown inside mobile menu – open upward if needed */
+  .header__mobile-actions .header__lang-menu {
+    top: auto;
+    bottom: calc(100% + 6px);  /* opens above the button so it doesn’t go off-screen */
   }
 }
 </style>

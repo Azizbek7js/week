@@ -5,12 +5,12 @@ import { ref, computed } from 'vue'
 import Group848 from '../assets/images/Group-848.webp'
 import Group849 from '../assets/images/Group-849.webp'
 
-// Slide 1 — Digital Startups Program
+// Slide 1
 import startupBaseIcon from '../assets/images/startupBase.webp'
 import QRcode from '../assets/images/QRcode.webp'
 import metric from '../assets/images/metric-container.webp'
 
-// Slide 2 — Key Indicators of IT Park Members
+// Slide 2
 import exportGeography from '../assets/images/exportGeography.webp'
 import typeOfExport from '../assets/images/typeOfExport.webp'
 import Revenue from '../assets/images/Revenue.webp'
@@ -18,7 +18,7 @@ import numberCompanies from '../assets/images/numberCompanies.webp'
 import ForeignCapital from '../assets/images/ForeignCapital.webp'
 import RevenueMembers from '../assets/images/RevenueMembers.webp'
 
-// Slide 3 — Enterprise Uzbekistan
+// Slide 3
 import Sandbox from '../assets/images/Sandbox.webp'
 import exchange from '../assets/images/currency-exchange.webp'
 import taxRefund from '../assets/images/tax-refund.webp'
@@ -29,7 +29,7 @@ import digitalBrain from '../assets/images/digital-brain.webp'
 import earningsReport from '../assets/images/earnings-report.webp'
 import globalNetwork from '../assets/images/global-network.webp'
 
-// Slide 4 — Digital Service and Products Export Development
+// Slide 4
 import FreeOfficeIcon from '../assets/images/FreeOffice.webp'
 import Technical from '../assets/images/Technical.webp'
 import farmImage from '../assets/images/farmImage.webp'
@@ -50,7 +50,7 @@ import kr from '../assets/images/sk.webp'
 import jp from '../assets/images/jp.webp'
 
 /* -------------------------------------------------------------------- */
-/*  Slide 1 data — Digital Startups Program                             */
+/*  Data                                                                 */
 /* -------------------------------------------------------------------- */
 const startupItems = [
   { value: '100%', label: 'Reimbursement for patenting and trademark registration' },
@@ -63,15 +63,6 @@ const startupItems = [
   { value: '$10K', label: 'Awarding grants directly to winners of national hackathons and ideathons' }
 ]
 
-/* -------------------------------------------------------------------- */
-/*  Slide 2 data — Key Indicators of IT Park Members                    */
-/* -------------------------------------------------------------------- */
-const geography = [
-  { label: 'NORTH AMERICA', value: '46%' },
-  { label: 'CIS & APAC', value: '27%' },
-  { label: 'EU AND UK', value: '21%' },
-  { label: 'MENA', value: '6%' }
-]
 const offices = [
   { flag: us, name: 'USA' },
   { flag: ger, name: 'Germany' },
@@ -80,15 +71,13 @@ const offices = [
   { flag: kr, name: 'South Korea' },
   { flag: jp, name: 'Japan' }
 ]
+
 const bigStats = [
   { title: 'Number of Member Companies', value: '3 400+', growth: '22x', chart: numberCompanies },
   { title: 'Growth of Companies with Foreign Capital', value: '970+', growth: '127x', extra: 'Number of American capital companies', chart: ForeignCapital },
   { title: 'Revenue of Members (Million USD)', value: '2 800.0', growth: '127x', chart: RevenueMembers }
 ]
 
-/* -------------------------------------------------------------------- */
-/*  Slide 3 data — Enterprise Uzbekistan                                 */
-/* -------------------------------------------------------------------- */
 const features = [
   { title: 'Regulatory Sandbox', desc: 'Legally protected testing environment for new business models and frontier technologies.', icon: Sandbox },
   { title: 'Foreign exchange freedom', desc: 'Foreign currency operations, payroll, and capital flows without conversion mandates.', icon: exchange },
@@ -101,7 +90,6 @@ const features = [
   { title: 'Export promotion', desc: 'Favourable operating conditions for export-driven companies with zero-friction outbound trade.', icon: globalNetwork }
 ]
 
-// Each card shares the same gradient direction/structure — only the tint (bg color) changes per card
 const featureGradients = [
   'linear-gradient(96.51deg, rgba(132, 255, 193, 0) -19.05%, rgba(132, 255, 193, 0.32) 100.49%)',
   'linear-gradient(94.25deg, rgba(255, 255, 255, 0.05) 0%, rgba(132, 235, 194, 0.22) 100.51%)',
@@ -111,9 +99,6 @@ function featureBg(i) {
   return featureGradients[i % featureGradients.length]
 }
 
-/* -------------------------------------------------------------------- */
-/*  Slide 4 data — Digital Service and Products Export Development       */
-/* -------------------------------------------------------------------- */
 const benefits = [
   { label: 'CORPORATE TAXES', value: '0%' },
   { label: 'SOCIAL TAX', value: '0%' },
@@ -125,14 +110,6 @@ const benefits = [
 const zeroRisk = [
   { icon: FreeOfficeIcon, text: 'Free office for 1 year' },
   { icon: Technical, text: 'Technical Equipment for 1 year' }
-]
-const energyStats = [
-  { value: '9.3 GW', label: 'Major green, wind-powered energy capacity', tag: 'Wind farms' },
-  { value: '1 885 km', label: 'Extensive high-voltage transmission network', tag: 'Electricity grid' }
-]
-const specialTerms = [
-  { value: '$0.05 kWh', text: 'Competitive electricity rate' },
-  { value: '$0.08-$0.12', text: 'Low-cost water supply' }
 ]
 const softlanding = [
   { icon: RegistrationIcon, text: '3 days Company registration' },
@@ -149,8 +126,9 @@ const extraCards = [
   { title: 'Fast-track construction', text: 'Accelerated Design-Procure-Build with streamlined land allocation in region' },
   { title: 'Direct international payments', text: 'Cross-border transactions without local bank intermediaries' }
 ]
+
 /* -------------------------------------------------------------------- */
-/*  Carousel logic                                                       */
+/*  Carousel                                                             */
 /* -------------------------------------------------------------------- */
 const slides = ['startups', 'indicators', 'enterprise', 'export']
 const slideLabels = [
@@ -183,14 +161,14 @@ const activeSlide = computed(() => slides[current.value])
   <section class="section showcase">
     <div class="container">
       <div class="showcase__panel">
-        <!-- Shared header -->
+        <!-- Header -->
         <div class="showcase__head">
           <div class="showcase__head-left">
             <span class="showcase__bar" aria-hidden="true"></span>
             <h2>{{ slideLabels[current] }}</h2>
           </div>
           <div class="showcase__logos">
-            <img :src="Group848" alt="Ministry of Digital Technologies of the Republic of Uzbekistan" class="showcase__logo" />
+            <img :src="Group848" alt="Ministry of Digital Technologies" class="showcase__logo" />
             <img :src="Group849" alt="IT Park Uzbekistan" class="showcase__logo showcase__logo--itpark" />
           </div>
         </div>
@@ -199,12 +177,12 @@ const activeSlide = computed(() => slides[current.value])
         <transition :name="direction" mode="out-in">
           <div :key="current" class="showcase__body">
 
-            <!-- ============ SLIDE 1 — DIGITAL STARTUPS PROGRAM ============ -->
+            <!-- SLIDE 1 -->
             <div v-if="activeSlide === 'startups'" class="startups">
               <div class="startups__grid">
                 <div v-for="(item, i) in startupItems" :key="i" class="startups__item">
                   <span v-if="item.value" class="startups__value">{{ item.value }}</span>
-                  <img v-else :src="metric" class="startups__value" alt="Startup Base" />
+                  <img v-else :src="metric" class="startups__value-img" alt="" />
                   <p>{{ item.label }}</p>
                 </div>
               </div>
@@ -218,35 +196,36 @@ const activeSlide = computed(() => slides[current.value])
                 </p>
                 <div class="startups__qr-box">
                   <div class="startups__qr-brand">
-                    <img :src="startupBaseIcon" alt="Startup Base"
-                    />
+                    <img :src="startupBaseIcon" alt="Startup Base" />
                   </div>
-                  <img :src="QRcode" alt="QR code to Startup Base platform" class="startups__qr-code" />
+                  <img :src="QRcode" alt="QR code" class="startups__qr-code" />
                 </div>
               </div>
             </div>
 
-            <!-- ============ SLIDE 2 — KEY INDICATORS ============ -->
+            <!-- SLIDE 2 -->
             <div v-else-if="activeSlide === 'indicators'" class="indicators">
               <div class="indicators__row indicators__row--top">
                 <div class="indicators__box indicators__box--geo">
-                  <img :src="exportGeography" alt="Export geography map" class="indicators__map" />
+                  <img :src="exportGeography" alt="Export geography" class="indicators__map" />
                 </div>
 
                 <div class="indicators__right">
                   <div class="indicators__box">
-                    <img :src="typeOfExport" alt="Types of export breakdown" class="indicators__donut" />
+                    <img :src="typeOfExport" alt="Types of export" class="indicators__donut" />
                   </div>
                   <div class="indicators__box">
-                    <img :src="Revenue" alt="ICT export revenue growth chart" class="indicators__chart" />
+                    <img :src="Revenue" alt="ICT export revenue" class="indicators__chart" />
                   </div>
                   <div class="indicators__offices">
                     <h3>6 REPRESENTATIVE OFFICES ABROAD</h3>
                     <ul>
                       <li v-for="o in offices" :key="o.name">
                         <span class="indicators__flag">
-                        <img :src="o.flag" alt="flag" width="32" height="32" />
-                      </span>{{ o.name }}</li>
+                          <img :src="o.flag" :alt="o.name" width="28" height="28" />
+                        </span>
+                        {{ o.name }}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -259,20 +238,28 @@ const activeSlide = computed(() => slides[current.value])
               </div>
             </div>
 
-            <!-- ============ SLIDE 3 — ENTERPRISE UZBEKISTAN ============ -->
+            <!-- SLIDE 3 -->
             <div v-else-if="activeSlide === 'enterprise'" class="features">
               <div class="features__grid">
-                <article v-for="(f, i) in features" :key="f.title" class="features__card" :style="{ background: featureBg(i) }">
+                <article
+                    v-for="(f, i) in features"
+                    :key="f.title"
+                    class="features__card"
+                    :style="{ background: featureBg(i) }"
+                >
                   <div class="features__card-top">
                     <h3>{{ f.title }}</h3>
-                    <span class="features__icon"><img :src="f.icon" :alt="f.title" /></span>
+                    <span class="features__icon">
+                      <img :src="f.icon" :alt="f.title" />
+                    </span>
                   </div>
                   <p>{{ f.desc }}</p>
                 </article>
               </div>
             </div>
+
+            <!-- SLIDE 4 -->
             <div v-else class="export">
-              <!-- Top row: Benefits | Zero Risk | Energy -->
               <div class="export__grid export__grid--top">
                 <div class="export__box">
                   <h3>BENEFITS FOR IT PARK MEMBER COMPANIES</h3>
@@ -296,8 +283,7 @@ const activeSlide = computed(() => slides[current.value])
 
                 <div class="export__box export__box--energy">
                   <div class="export__energy-top">
-                    <img :src="farmImage" alt="Map of Uzbekistan energy infrastructure" class="export__energy-map" />
-
+                    <img :src="farmImage" alt="Energy map" class="export__energy-map" />
                     <div class="export__energy-stats">
                       <div class="export__energy-stat">
                         <div class="export__energy-stat-main">
@@ -306,7 +292,6 @@ const activeSlide = computed(() => slides[current.value])
                         </div>
                         <p>Major green, wind-powered energy capacity</p>
                       </div>
-
                       <div class="export__energy-stat">
                         <div class="export__energy-stat-main">
                           <strong>1 885 km</strong>
@@ -318,7 +303,6 @@ const activeSlide = computed(() => slides[current.value])
                   </div>
 
                   <h3 class="export__special-title">SPECIAL TERMS</h3>
-
                   <div class="export__special">
                     <div class="export__special-item">
                       <span class="export__special-dot"></span>
@@ -338,7 +322,6 @@ const activeSlide = computed(() => slides[current.value])
                 </div>
               </div>
 
-              <!-- Middle row: Fast-track | Direct payments -->
               <div class="export__grid export__grid--extra">
                 <div v-for="c in extraCards" :key="c.title" class="export__box export__box--extra">
                   <h3>{{ c.title }}</h3>
@@ -346,7 +329,6 @@ const activeSlide = computed(() => slides[current.value])
                 </div>
               </div>
 
-              <!-- Bottom row: Softlanding | IT-VISA | DataVolt -->
               <div class="export__grid export__grid--bottom">
                 <div class="export__box">
                   <h3>SOFTLANDING SUPPORT</h3>
@@ -377,10 +359,10 @@ const activeSlide = computed(() => slides[current.value])
                     Turn your Data Center into the cutting edge infrastructure for AI &amp; MINING
                   </p>
                   <div class="export__datavolt-stats">
-        <span>
-          <img :src="datavoltlogo" alt="Datavolt" class="export__datavolt-logo" />
-          capacity 500+ MW
-        </span>
+                    <span>
+                      <img :src="datavoltlogo" alt="Datavolt" class="export__datavolt-logo" />
+                      capacity 500+ MW
+                    </span>
                     <span><strong>$6.5B</strong> investment</span>
                   </div>
                   <p class="export__datavolt-invest">
@@ -392,14 +374,15 @@ const activeSlide = computed(() => slides[current.value])
                 </div>
               </div>
             </div>
-
           </div>
         </transition>
 
-        <!-- Shared navigation -->
+        <!-- Nav -->
         <div class="showcase__nav">
           <button type="button" aria-label="Previous" @click="prev">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
           </button>
           <div class="showcase__dots">
             <span
@@ -411,7 +394,9 @@ const activeSlide = computed(() => slides[current.value])
             ></span>
           </div>
           <button type="button" class="showcase__nav-next" aria-label="Next" @click="next">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="#062015" stroke-width="2" stroke-linecap="round" /></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M9 5l7 7-7 7" stroke="#062015" stroke-width="2" stroke-linecap="round" />
+            </svg>
           </button>
         </div>
       </div>
@@ -421,7 +406,7 @@ const activeSlide = computed(() => slides[current.value])
 
 <style scoped>
 /* ===================================================================== */
-/*  Shared panel / header / nav                                          */
+/*  Shared                                                               */
 /* ===================================================================== */
 .showcase__panel {
   border: 1px solid var(--border);
@@ -429,6 +414,7 @@ const activeSlide = computed(() => slides[current.value])
   background: radial-gradient(70.61% 100% at 49.18% 100%, #0C1E5B 0%, #010101 100%);
   overflow: hidden;
 }
+
 .showcase__head {
   background: linear-gradient(90deg, #84FFC1 44.12%, rgba(132, 255, 193, 0) 100%);
   display: flex;
@@ -437,15 +423,15 @@ const activeSlide = computed(() => slides[current.value])
   gap: 12px;
   color: #121B26;
   padding: 13px 24px;
-  border-top-right-radius: var(--radius-lg);
-  border-top-left-radius: var(--radius-lg);
 }
+
 .showcase__head-left {
   display: flex;
   align-items: center;
   gap: 12px;
   min-width: 0;
 }
+
 .showcase__bar {
   width: 1px;
   height: 20px;
@@ -453,6 +439,7 @@ const activeSlide = computed(() => slides[current.value])
   background: rgba(18, 27, 38, 0.35);
   border-radius: 2px;
 }
+
 .showcase__head h2 {
   font-size: 17px;
   font-weight: 700;
@@ -461,12 +448,14 @@ const activeSlide = computed(() => slides[current.value])
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .showcase__logos {
   display: flex;
   align-items: center;
   gap: 14px;
   flex-shrink: 0;
 }
+
 .showcase__logo {
   height: 32px;
   width: auto;
@@ -478,7 +467,7 @@ const activeSlide = computed(() => slides[current.value])
   min-height: 320px;
 }
 
-/* Slide transition */
+/* Transitions */
 .slide-next-enter-active,
 .slide-next-leave-active,
 .slide-prev-enter-active,
@@ -486,9 +475,9 @@ const activeSlide = computed(() => slides[current.value])
   transition: opacity 0.28s ease, transform 0.32s ease;
 }
 .slide-next-enter-from { opacity: 0; transform: translateX(24px); }
-.slide-next-leave-to { opacity: 0; transform: translateX(-24px); }
+.slide-next-leave-to   { opacity: 0; transform: translateX(-24px); }
 .slide-prev-enter-from { opacity: 0; transform: translateX(-24px); }
-.slide-prev-leave-to { opacity: 0; transform: translateX(24px); }
+.slide-prev-leave-to   { opacity: 0; transform: translateX(24px); }
 
 .showcase__nav {
   display: flex;
@@ -497,11 +486,13 @@ const activeSlide = computed(() => slides[current.value])
   gap: 16px;
   padding: 24px;
 }
+
 .showcase__dots {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .showcase__dot {
   width: 8px;
   height: 8px;
@@ -510,10 +501,12 @@ const activeSlide = computed(() => slides[current.value])
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
 }
+
 .showcase__dot--active {
   background: var(--accent);
   transform: scale(1.3);
 }
+
 .showcase__nav button {
   width: 34px;
   height: 34px;
@@ -528,14 +521,19 @@ const activeSlide = computed(() => slides[current.value])
   flex-shrink: 0;
   transition: opacity 0.2s ease, transform 0.15s ease;
 }
-.showcase__nav button:hover { opacity: 0.8; transform: scale(1.05); }
+
+.showcase__nav button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
 .showcase__nav-next {
   background: var(--accent) !important;
   border-color: var(--accent) !important;
 }
 
 /* ===================================================================== */
-/*  Slide 1 — Digital Startups Program                                   */
+/*  Slide 1 — Startups                                                   */
 /* ===================================================================== */
 .startups__grid {
   display: grid;
@@ -543,6 +541,7 @@ const activeSlide = computed(() => slides[current.value])
   gap: 14px;
   margin-bottom: 20px;
 }
+
 .startups__item {
   display: flex;
   align-items: center;
@@ -552,24 +551,26 @@ const activeSlide = computed(() => slides[current.value])
   border-radius: var(--radius-sm);
   padding: 14px 16px;
 }
+
 .startups__value {
   font-family: 'Manrope', sans-serif;
   text-align: center;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   color: var(--accent-2);
-  min-width: 100px;
+  min-width: 90px;
+  flex-shrink: 0;
 }
-.startups__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 64px;
+
+.startups__value-img {
+  width: 64px;
+  height: auto;
+  flex-shrink: 0;
 }
+
 .startups__item p {
-  font-family: 'Manrope', sans-serif;
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
   color: #ffffff;
   line-height: 1.4;
 }
@@ -578,20 +579,21 @@ const activeSlide = computed(() => slides[current.value])
   display: flex;
   align-items: center;
   gap: 20px;
-  border-radius: var(--radius-md);
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
+
 .startups__footer p {
   background: linear-gradient(94.25deg, rgba(132, 255, 193, 0) 0%, rgba(132, 255, 193, 0.4) 100.51%);
   padding: 18px 22px;
   border-radius: var(--radius-md);
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--text);
   line-height: 1.5;
   flex: 1;
 }
+
 .startups__qr-box {
   display: flex;
   align-items: center;
@@ -602,27 +604,29 @@ const activeSlide = computed(() => slides[current.value])
   border-radius: var(--radius-sm);
   padding: 12px 16px;
 }
-.startups__qr-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-  white-space: nowrap;
+
+.startups__qr-brand img {
+  width: 140px;
+  height: auto;
 }
-.startups__qr-brand img { width: 155px; height: 36px; }
-.startups__qr-code { width: 88px; height: 88px; border-radius: 6px; flex-shrink: 0; }
+
+.startups__qr-code {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
 
 /* ===================================================================== */
-/*  Slide 2 — Key Indicators                                             */
+/*  Slide 2 — Indicators                                                 */
 /* ===================================================================== */
 .indicators__row {
   display: grid;
-  grid-template-columns: 1fr 1.4fr ;
+  grid-template-columns: 1fr 1.4fr;
   gap: 16px;
   margin-bottom: 16px;
 }
+
 .indicators__right {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -636,46 +640,36 @@ const activeSlide = computed(() => slides[current.value])
 .indicators__row--bottom {
   grid-template-columns: repeat(3, 1fr);
 }
+
 .indicators__box {
   background: #FFFFFF0D;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 16px;
 }
-.indicators__box h3 {
-  font-size: 14px;
-  margin: 0 0 12px;
-  color: var(--text-dim);
+
+.indicators__map,
+.indicators__donut,
+.indicators__chart {
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.indicators__box h3 small { color: var(--text-faint); font-weight: 400; }
-
-.indicators__map { width: 100%; height: auto; margin-bottom: 10px; }
-.indicators__box--geo ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.indicators__box--geo li strong { display: block; color: var(--accent-2); font-size: 18px; }
-.indicators__box--geo li span { font-size: 11px; color: var(--text-faint); }
-
-.indicators__donut { display: block; width: 100%; height: 100%; }
-.indicators__chart { display: block; width: 100%; height: 100%; }
-
-.indicators__growth { margin: 0 0 10px; font-size: 13px; color: var(--text-dim); }
-.indicators__growth strong { color: var(--accent-2); font-size: 20px; margin-right: 4px; }
-.indicators__extra { font-size: 11px; color: var(--accent-2); margin: -6px 0 10px; }
 
 .indicators__offices {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 16px 18px;
-  margin-bottom: 16px;
+  padding: 16px;
   background: #FFFFFF0D;
 }
-.indicators__offices h3 { font-size: 13px; margin: 0 0 12px; color: var(--text-dim); text-align: center; }
+
+.indicators__offices h3 {
+  font-size: 13px;
+  margin: 0 0 12px;
+  color: var(--text-dim);
+  text-align: center;
+}
+
 .indicators__offices ul {
   list-style: none;
   margin: 0;
@@ -683,28 +677,38 @@ const activeSlide = computed(() => slides[current.value])
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   font-size: 13px;
   color: var(--text-dim);
 }
-.indicators__offices li { display: flex; align-items: center; gap: 6px; }
-.indicators__flag { font-size: 16px; line-height: 1; }
+
+.indicators__offices li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.indicators__flag img {
+  display: block;
+  border-radius: 4px;
+}
 
 /* ===================================================================== */
-/*  Slide 3 — Enterprise Uzbekistan                                      */
+/*  Slide 3 — Features                                                   */
 /* ===================================================================== */
 .features__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
+
 .features__card {
-  background: #FFFFFF0D;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 20px;
+  padding: 18px;
 }
+
 .features__card-top {
   display: flex;
   align-items: flex-start;
@@ -712,7 +716,13 @@ const activeSlide = computed(() => slides[current.value])
   gap: 10px;
   margin-bottom: 10px;
 }
-.features__card h3 { font-size: 17px; margin: 0; color: var(--text); }
+
+.features__card h3 {
+  font-size: 16px;
+  margin: 0;
+  color: var(--text);
+}
+
 .features__icon {
   width: 40px;
   height: 40px;
@@ -723,11 +733,21 @@ const activeSlide = computed(() => slides[current.value])
   align-items: center;
   justify-content: center;
 }
-.features__icon img { width: 20px; height: 20px; }
-.features__card p { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin: 0; }
+
+.features__icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.features__card p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+}
 
 /* ===================================================================== */
-/*  Slide 4 — Digital Service and Products Export Development             */
+/*  Slide 4 — Export                                                     */
 /* ===================================================================== */
 .export__grid {
   display: grid;
@@ -735,19 +755,23 @@ const activeSlide = computed(() => slides[current.value])
   gap: 16px;
   margin-bottom: 16px;
 }
+
 .export__grid--extra {
   grid-template-columns: repeat(2, 1fr);
 }
+
 .export__grid--bottom {
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
+
 .export__box {
   background: #FFFFFF0D;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 18px;
 }
+
 .export__box h3 {
   font-size: 13px;
   margin: 0 0 14px;
@@ -756,11 +780,31 @@ const activeSlide = computed(() => slides[current.value])
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
-.export__benefits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.export__benefits li { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-dim); }
-.export__benefits strong { min-width: 34px; color: var(--accent-2); font-size: 14px; }
+.export__benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.export__benefits li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.export__benefits strong {
+  min-width: 34px;
+  color: var(--accent-2);
+  font-size: 14px;
+}
 
 .export__reimburse p {
   display: flex;
@@ -773,93 +817,22 @@ const activeSlide = computed(() => slides[current.value])
   color: var(--text-dim);
   margin: 0 0 10px;
 }
-.export__reimburse p:last-child { margin-bottom: 0; }
-.export__reimburse img { width: 22px; height: 22px; flex-shrink: 0; }
 
-.export__box--energy { display: flex; flex-direction: column; gap: 12px; }
-.export__energy-map {
-  width: 100%;
-  height: 60px;
-  object-fit: contain;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(160deg, #12241c, #0c1712);
-  border: 1px solid var(--border);
+.export__reimburse p:last-child {
+  margin-bottom: 0;
 }
-.export__energy-stats p {
-  margin: 0 0 8px;
-  font-size: 12px;
-  color: var(--text-dim);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  position: relative;
-}
-.export__energy-stats strong { color: var(--accent-2); font-size: 16px; }
-.export__energy-tag {
-  align-self: flex-end;
-  margin-top: -18px;
-  font-size: 10px;
-  color: var(--accent-2);
-  background: rgba(62, 224, 138, 0.12);
-  border-radius: 20px;
-  padding: 3px 10px;
-}
-.export__special-title { margin: 4px 0 8px; font-size: 12px; }
-.export__special { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--text-dim); }
-.export__special strong { color: var(--accent-2); margin-right: 6px; }
 
-.export__box--extra p { margin: 0; font-size: 12px; color: var(--text-dim); line-height: 1.5; }
-
-.export__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: var(--text-dim); }
-.export__list li { display: flex; align-items: center; gap: 10px; }
-.export__list img { width: 20px; height: 20px; flex-shrink: 0; }
-.export__powered { font-size: 10px; color: var(--text-faint); font-weight: 400; margin-left: 8px; }
-.export__itvisa-logo { width: 18px; height: 18px; }
-
-.export__box--datavolt { background: linear-gradient(160deg, rgba(62, 224, 138, 0.14), #FFFFFF0D); }
-.export__datavolt-lead { font-size: 13px; color: var(--text); margin: 0 0 12px; font-weight: 600; }
-.export__datavolt-stats { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--text-dim); margin-bottom: 10px; }
-.export__datavolt-stats span { display: flex; align-items: center; gap: 6px; }
-.export__datavolt-logo { height: 14px; width: auto; }
-.export__datavolt-invest { font-size: 13px; color: var(--accent-2); margin: 0 0 10px; }
-.export__no-tax { font-size: 11px; color: var(--text-faint); margin: 0; }
-
-/* ===================================================================== */
-/*  Responsive                                                           */
-/* ===================================================================== */
-@media (max-width: 1024px) {
-  .indicators__row,
-  .indicators__row--bottom,
-  .export__grid,
-  .export__grid--bottom {
-    grid-template-columns: 1fr 1fr;
-  }
-  .features__grid { grid-template-columns: repeat(2, 1fr); }
+.export__reimburse img {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
-@media (max-width: 640px) {
-  .showcase__head { flex-wrap: wrap; padding: 12px 16px; }
-  .showcase__body { padding: 16px 16px 0; }
-  .showcase__nav { padding: 16px; }
-  .startups__grid { grid-template-columns: 1fr; }
-  .startups__footer { flex-direction: column; align-items: stretch; }
-  .startups__qr-box { justify-content: space-between; }
-  .indicators__row,
-  .indicators__row--bottom,
-  .export__grid,
-  .export__grid--extra,
-  .export__grid--bottom {
-    grid-template-columns: 1fr;
-  }
-  .indicators__box--geo ul { grid-template-columns: 1fr 1fr; }
-  .features__grid { grid-template-columns: 1fr; }
-}
-/* ===== Energy box — Figma match ===== */
+
+/* Energy */
 .export__box--energy {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 16px 18px;
 }
 
 .export__energy-top {
@@ -917,7 +890,6 @@ const activeSlide = computed(() => slides[current.value])
   line-height: 1.35;
 }
 
-/* SPECIAL TERMS */
 .export__special-title {
   font-size: 13px !important;
   font-weight: 700;
@@ -966,5 +938,335 @@ const activeSlide = computed(() => slides[current.value])
   color: var(--text-dim);
   line-height: 1.3;
   margin-top: 2px;
+}
+
+.export__box--extra p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.export__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.export__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.export__list img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.export__powered {
+  font-size: 10px;
+  color: var(--text-faint);
+  font-weight: 400;
+}
+
+.export__itvisa-logo {
+  width: 18px;
+  height: 18px;
+}
+
+.export__box--datavolt {
+  background: linear-gradient(160deg, rgba(62, 224, 138, 0.14), #FFFFFF0D);
+}
+
+.export__datavolt-lead {
+  font-size: 13px;
+  color: var(--text);
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.export__datavolt-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.export__datavolt-stats span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.export__datavolt-logo {
+  height: 14px;
+  width: auto;
+}
+
+.export__datavolt-invest {
+  font-size: 13px;
+  color: var(--accent-2);
+  margin: 0 0 10px;
+}
+
+.export__no-tax {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+/* ===================================================================== */
+/*  TABLET ≤ 1024px                                                      */
+/* ===================================================================== */
+@media (max-width: 1024px) {
+  .showcase__head h2 {
+    font-size: 15px;
+  }
+
+  .indicators__row {
+    grid-template-columns: 1fr;
+  }
+
+  .indicators__right {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .indicators__row--bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .indicators__row--bottom .indicators__box:last-child {
+    grid-column: span 2;
+  }
+
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .export__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .export__grid--top .export__box--energy {
+    grid-column: span 2;
+  }
+
+  .export__grid--bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .export__grid--bottom .export__box--datavolt {
+    grid-column: span 2;
+  }
+}
+
+/* ===================================================================== */
+/*  MOBILE ≤ 640px                                                       */
+/* ===================================================================== */
+@media (max-width: 640px) {
+  .showcase__panel {
+    border-radius: 16px;
+  }
+
+  /* Header */
+  .showcase__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .showcase__head h2 {
+    font-size: 13px;
+    white-space: normal;
+    line-height: 1.3;
+  }
+
+  .showcase__logos {
+    gap: 10px;
+  }
+
+  .showcase__logo {
+    height: 24px;
+  }
+
+  .showcase__body {
+    padding: 14px 14px 0;
+  }
+
+  .showcase__nav {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  /* ---- Slide 1 ---- */
+  .startups__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .startups__item {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .startups__value {
+    font-size: 22px;
+    min-width: 72px;
+  }
+
+  .startups__value-img {
+    width: 48px;
+  }
+
+  .startups__item p {
+    font-size: 13px;
+  }
+
+  .startups__footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .startups__footer p {
+    font-size: 14px;
+    padding: 14px 16px;
+  }
+
+  .startups__qr-box {
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 14px;
+  }
+
+  .startups__qr-brand img {
+    width: 120px;
+  }
+
+  .startups__qr-code {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* ---- Slide 2 ---- */
+  .indicators__row,
+  .indicators__row--bottom {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .indicators__right {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .indicators__right > :nth-child(3) {
+    grid-column: auto;
+  }
+
+  .indicators__row--bottom .indicators__box:last-child {
+    grid-column: auto;
+  }
+
+  .indicators__box {
+    padding: 12px;
+  }
+
+  .indicators__offices ul {
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .indicators__flag img {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ---- Slide 3 ---- */
+  .features__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .features__card {
+    padding: 14px;
+  }
+
+  .features__card h3 {
+    font-size: 15px;
+  }
+
+  .features__card p {
+    font-size: 13px;
+  }
+
+  /* ---- Slide 4 ---- */
+  .export__grid,
+  .export__grid--extra,
+  .export__grid--bottom {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .export__grid--top .export__box--energy,
+  .export__grid--bottom .export__box--datavolt {
+    grid-column: auto;
+  }
+
+  .export__box {
+    padding: 14px;
+  }
+
+  .export__box h3 {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .export__benefits li {
+    font-size: 12px;
+  }
+
+  .export__reimburse p {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  /* Energy mobile */
+  .export__energy-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .export__energy-map {
+    width: 100%;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .export__energy-stat strong {
+    font-size: 16px;
+  }
+
+  .export__special {
+    grid-template-columns: 1fr;
+  }
+
+  .export__list {
+    font-size: 13px;
+  }
+
+  .export__datavolt-lead {
+    font-size: 13px;
+  }
 }
 </style>

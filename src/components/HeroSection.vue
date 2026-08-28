@@ -9,7 +9,7 @@ import Vector from '../assets/images/Vector.webp'
 import Uzum from '../assets/images/uzum.webp'
 import TbcBank from '../assets/images/tbc.webp'
 
-const EVENT_DATE = new Date('2026-10-01T00:00:00Z') // UTC time
+const EVENT_DATE = new Date('2026-10-01T00:00:00Z')
 const days = ref(0)
 const hours = ref(0)
 const minutes = ref(0)
@@ -35,8 +35,6 @@ function stopTimer() {
   timer = null
 }
 
-// Pause the interval while the tab is hidden — saves CPU/battery on
-// background tabs, and re-syncs the numbers the instant it's visible again.
 function handleVisibilityChange() {
   if (document.hidden) {
     stopTimer()
@@ -157,6 +155,7 @@ function handleEnded() {
           />
         </div>
 
+        <!-- Card 1 -->
         <div class="hero__stat-card">
           <span class="hero__stat-year">2026</span>
           <div class="hero__stat-row">
@@ -170,16 +169,11 @@ function handleEnded() {
             </div>
           </div>
           <span class="hero__stat-source">
-              <img
-                  :src="photo3"
-                  alt="ICT Week 2026 medal"
-                  width="92"
-                  height="22"
-                  decoding="async"
-              />
+            <img :src="photo3" alt="Source" width="92" height="22" decoding="async" />
           </span>
         </div>
 
+        <!-- Card 2 -->
         <div class="hero__stat-card">
           <span class="hero__stat-year">2026</span>
           <div class="hero__stat-row">
@@ -193,48 +187,25 @@ function handleEnded() {
             </div>
           </div>
           <span class="hero__stat-source">
-             <img
-                 :src="StartupBlink"
-                 alt="ICT Week 2026 medal"
-                 width="92"
-                 height="22"
-                 decoding="async"
-             />
+            <img :src="StartupBlink" alt="StartupBlink" width="92" height="22" decoding="async" />
           </span>
         </div>
 
-        <div class="hero__stat-card">
+        <!-- Card 3 — Fintech Unicorns -->
+        <div class="hero__stat-card hero__stat-card--unicorn">
           <span class="hero__stat-year">2026</span>
-          <div class="hero__stat-row">
+          <div class="hero__stat-row hero__stat-row--unicorn">
             <div class="hero__stat">
-              <strong>2
-                <img
-                    :src="Vector"
-                    alt="ICT Week 2026 medal"
-                    width="30"
-                    height="32"
-                    decoding="async"
-                />
+              <strong class="hero__unicorn-num">
+                2
+                <img :src="Vector" alt="" width="28" height="30" decoding="async" />
               </strong>
               <span>Fintech Unicorns</span>
             </div>
           </div>
-          <span class="hero__stat-source">
-            <img
-                :src="Uzum"
-                alt="ICT Week 2026 medal"
-                width="90"
-                height="23"
-                style="margin-bottom: 10px"
-                decoding="async"
-            />
-            <img
-                :src="TbcBank"
-                alt="ICT Week 2026 medal"
-                width="90"
-                height="23"
-                decoding="async"
-            />
+          <span class="hero__stat-source hero__stat-source--logos">
+            <img :src="Uzum" alt="Uzum" width="80" height="20" decoding="async" />
+            <img :src="TbcBank" alt="TBC Bank" width="80" height="20" decoding="async" />
           </span>
         </div>
       </div>
@@ -246,12 +217,14 @@ function handleEnded() {
 .hero {
   padding: 48px 0 0;
 }
+
 .hero__header {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 20px 0;
 }
+
 .hero__title {
   font-family: Manrope, sans-serif;
   text-align: center;
@@ -352,8 +325,6 @@ function handleEnded() {
   gap: 10px;
   flex-wrap: wrap;
 }
-/* Match the reference: outline button carries a soft mint border here,
-   not the neutral global border */
 .hero__card-actions .btn-outline {
   border-color: rgba(107, 230, 168, 0.35);
   color: var(--accent-2);
@@ -384,19 +355,18 @@ function handleEnded() {
 }
 .hero__countdown-item span {
   font-family: Manrope, sans-serif;
-  font-style: normal;
   font-size: 18px;
   font-weight: 500;
-  letter-spacing: 0;
   color: var(--accent-2);
 }
 
+/* ========== STATS ========== */
 .hero__stats {
   margin-top: 20px;
   display: grid;
   grid-template-columns: auto repeat(3, 1fr);
   gap: 14px;
-  align-items: center;
+  align-items: stretch;
   background: #121B2666;
   backdrop-filter: blur(15px);
   border: 1px solid var(--border);
@@ -408,77 +378,107 @@ function handleEnded() {
   align-items: center;
   justify-content: center;
 }
+.hero__badge img {
+  max-width: 140px;
+  height: auto;
+}
 
-/* Each stat group is its own bordered card: mint→teal gradient ring,
-   rounded corners, "2026" tag pinned top-right, source pinned bottom-right.
-   The gradient border is done via the two-background-layers trick, since
-   `border` cannot take a gradient value directly (that was the bug). */
 .hero__stat-card {
-  height: 85%;
   position: relative;
   border: 1.2px solid transparent;
   border-radius: var(--radius-md);
-  /* padding-box fill must be near-opaque, or the vivid border-box gradient
-     shows through the semi-transparent interior — that was the bug: the
-     whole card looked tinted green instead of just a thin border ring. */
   background:
       linear-gradient(180deg, rgba(11, 16, 24, 0.96) 0%, rgba(11, 16, 24, 0.9) 100%) padding-box,
       linear-gradient(270deg, rgba(21, 91, 127, 1) 0%, rgba(27, 219, 134, 1) 100%) border-box;
-  padding: 12px 15px 11px;
+  padding: 18px 16px 40px; /* pastki qismda source uchun joy */
   overflow: hidden;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 .hero__stat-year {
   position: absolute;
   top: 0;
   right: 0;
   background: rgba(132, 255, 193, 1);
   color: rgba(18, 27, 38);
-  font-size: 15.75px;
+  font-size: 14px;
   font-weight: 700;
-  padding: 5px 16px;
+  padding: 5px 14px;
   border-bottom-left-radius: var(--radius-sm);
+  z-index: 2;
 }
+
 .hero__stat-row {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 16px;
 }
+
 .hero__stat {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
-.hero__stat-row .hero__stat + .hero__stat {
-  padding-left: 16px;
-}
+
 .hero__stat strong {
   display: flex;
   align-items: center;
   gap: 6px;
   font-family: Manrope, sans-serif;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 28px;
   color: #ffffff;
+  line-height: 1.1;
 }
-.hero__stat span {
-  font-family: Manrope , sans-serif;
-  max-width: 100px;
-  font-weight: 500;
-  font-style: Medium;
-  font-size: 12px;
-  line-height: 126%;
-  letter-spacing: 0%;
 
+.hero__stat span {
+  font-family: Manrope, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: none; /* eski 100px cheklov olib tashlandi */
 }
+
 .hero__stat-source {
   position: absolute;
   right: 14px;
-  bottom: 10px;
-  font-size: 11px;
-  color: var(--text-faint);
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
 }
 
+/* Unicorn card maxsus */
+.hero__stat-card--unicorn .hero__stat-row--unicorn {
+  justify-content: flex-start;
+}
+.hero__unicorn-num {
+  font-size: 36px !important;
+}
+.hero__unicorn-num img {
+  width: 28px;
+  height: auto;
+  margin-left: 2px;
+}
+.hero__stat-source--logos {
+  flex-direction: column;
+  gap: 8px;
+}
+.hero__stat-source--logos img {
+  display: block;
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ========== TABLET ========== */
 @media (max-width: 1024px) {
   .hero__title {
     font-size: 42px;
@@ -491,32 +491,112 @@ function handleEnded() {
   }
   .hero__badge {
     grid-column: span 2;
-    width: auto;
+    justify-self: center;
+  }
+  .hero__badge img {
+    max-width: 120px;
+  }
+  .hero__stat strong {
+    font-size: 26px;
   }
 }
 
+/* ========== MOBILE ========== */
 @media (max-width: 640px) {
-  .hero__title {
-    font-size: 30px;
+  .hero {
+    padding: 32px 0 0;
   }
+
+  .hero__title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .hero__media {
+    min-height: 200px;
+  }
+  .hero__video {
+    min-height: 200px;
+  }
+
+  .hero__card {
+    padding: 16px;
+  }
+  .hero__card-preview {
+    height: 180px;
+  }
+  .hero__card-text {
+    font-size: 18px;
+  }
+  .hero__countdown-item strong {
+    font-size: 28px;
+  }
+  .hero__countdown-item span {
+    font-size: 14px;
+  }
+
   .hero__stats {
     grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
   }
+
   .hero__badge {
     grid-column: auto;
+    order: -1; /* badge yuqorida */
   }
-  .hero__media {
-    min-height: 220px;
+  .hero__badge img {
+    max-width: 100px;
   }
+
+  .hero__stat-card {
+    min-height: 0;
+    padding: 16px 14px 48px; /* source uchun pastki joy */
+  }
+
+  .hero__stat-year {
+    font-size: 13px;
+    padding: 4px 12px;
+  }
+
   .hero__stat-row {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
+
   .hero__stat-row .hero__stat + .hero__stat {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid var(--border);
-    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+  }
+
+  .hero__stat strong {
+    font-size: 26px;
+  }
+
+  .hero__stat span {
+    font-size: 13px;
+    max-width: 100%;
+  }
+
+  /* Unicorn card mobil */
+  .hero__stat-card--unicorn {
+    padding-bottom: 56px;
+  }
+  .hero__unicorn-num {
+    font-size: 34px !important;
+  }
+  .hero__unicorn-num img {
+    width: 26px;
+  }
+  .hero__stat-source--logos {
+    flex-direction: row;          /* mobilada yonma-yon */
+    align-items: center;
+    gap: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+  .hero__stat-source--logos img {
+    height: 16px;
   }
 }
 </style>
