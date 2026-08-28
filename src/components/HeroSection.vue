@@ -317,7 +317,7 @@ function handleEnded() {
 }
 
 .hero__card {
-  background: rgba(255, 255, 255, 0.05);
+  background: #121B2666;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 20px;
@@ -397,7 +397,7 @@ function handleEnded() {
   grid-template-columns: auto repeat(3, 1fr);
   gap: 14px;
   align-items: center;
-  background: rgba(255, 255, 255, 0.01);
+  background: #121B2666;
   backdrop-filter: blur(15px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);

@@ -4,10 +4,7 @@ import HeroSection from '../components/HeroSection.vue'
 import SaveSpotSection from '../components/SaveSpotSection.vue'
 import PastAttendees from '../components/PastAttendees.vue'
 import EventTabs from '../components/EventTabs.vue'
-import KeyIndicators from '../components/KeyIndicators.vue'
-import EnterpriseFeatures from '../components/EnterpriseFeatures.vue'
-import ExportDevelopment from '../components/ExportDevelopment.vue'
-import StartupsProgram from '../components/StartupsProgram.vue'
+import ITParkShowcase from '../components/ITParkShowcase.vue'
 import PartnersSection from '../components/PartnersSection.vue'
 import RegisterForm from '../components/RegisterForm.vue'
 import AppFooter from '../components/AppFooter.vue'
@@ -21,13 +18,9 @@ import AppFooter from '../components/AppFooter.vue'
       <SaveSpotSection />
       <PastAttendees />
       <EventTabs />
-      <KeyIndicators />
-      <EnterpriseFeatures />
-      <ExportDevelopment />
-      <StartupsProgram />
+      <ITParkShowcase />
       <PartnersSection />
       <RegisterForm />
     </main>
-    <AppFooter />
   </div>
 </template>

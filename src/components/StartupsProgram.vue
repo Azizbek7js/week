@@ -1,4 +1,8 @@
 <script setup>
+import Group848 from '../assets/images/Group-848.svg'
+import Group849 from '../assets/images/Group-849.svg'
+import startupBaseIcon from '../assets/images/startupBase.svg'
+import QRcode from '../assets/images/QRcode.svg'
 const items = [
   { value: '100%', label: 'Reimbursement for patenting and trademark registration' },
   { value: '', icon: 'shield', label: 'Special legal regime "Regulatory Sandbox" for rapid piloting' },
@@ -103,12 +107,12 @@ const items = [
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 64px;
+  min-width: 100px;
 }
 .startups__item p {
   margin: 0;
-  font-size: 12.5px;
-  color: var(--text-dim);
+  font-size: 16px;
+  color: #ffffff;
   line-height: 1.4;
 }
 

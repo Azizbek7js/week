@@ -1,4 +1,10 @@
 <script setup>
+import exportGeography from '../assets/images/exportGeography.svg'
+import typeOfExport from '../assets/images/typeOfExport.svg'
+import Revenue from '../assets/images/Revenue.svg'
+import numberCompanies from '../assets/images/numberCompanies.svg'
+import ForeignCapital from '../assets/images/ForeignCapital.svg'
+import RevenueMembers from '../assets/images/RevenueMembers.svg'
 const exportTypes = [
   { label: 'IT Services', value: '53%' },
   { label: 'Software Products', value: '8%' },

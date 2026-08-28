@@ -1,5 +1,5 @@
 <script setup>
-import saveSpotPhoto from '../assets/images/logo.svg'
+import saveSpotJpg from '../assets/images/photo-4.jpg'
 
 function scrollToRegister() {
   document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' })
@@ -33,57 +33,76 @@ function scrollToRegister() {
             </svg>
           </button>
         </div>
-        <img
-            class="save__media"
-            :src="saveSpotPhoto"
-            alt="Speaker presenting on stage at ICT Week"
-            width="386"
-            height="281"
-            loading="lazy"
-            decoding="async"
-        />
+
+        <picture class="save__media">
+          <img
+              :src="saveSpotJpg"
+              alt="Speaker presenting on stage at ICT Week"
+              width="386"
+              height="281"
+              loading="lazy"
+              decoding="async"
+          />
+        </picture>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+/* Values below are taken directly from Figma's Inspect panel for this frame:
+   Width: Fill (1280px) · Height: Hug (484px) · Radius: 24px
+   Padding: 36 top / 36 right / 36 bottom / 42 left · Gap: 32px
+   Background: #121B26 @ 40% opacity */
 .save__card {
-  background: linear-gradient(135deg, rgba(20, 38, 30, 0.6), rgba(10, 16, 13, 0.6));
+  background: #121B2666;
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-lg);
-  padding: 44px;
+  border-radius: 24px;
+  padding: 36px 36px 36px 42px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
 }
 .save__text h2 {
-  font-size: 34px;
+  font-family: 'Manrope', var(--font);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #ededf2;
   margin: 0 0 16px;
 }
 .save__text p {
-  color: var(--text-dim);
-  font-size: 14.5px;
+  font-family: 'Manrope', var(--font);
+  font-weight: 500;
+  font-size: 18px;
   line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--text-dim);
   margin: 0 0 14px;
 }
 .save__media {
+  display: block;
   border-radius: var(--radius-md);
-  min-height: 260px;
+  overflow: hidden;
+  aspect-ratio: 386 / 281;
+  border: 1px solid var(--border);
+}
+.save__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 1px solid var(--border);
+  display: block;
 }
 
 @media (max-width: 1024px) {
   .save__card {
-    padding: 30px;
-    gap: 26px;
+    padding: 26px 26px 26px 30px;
+    gap: 24px;
   }
   .save__text h2 {
-    font-size: 28px;
+    font-size: 36px;
   }
 }
 
@@ -93,14 +112,19 @@ function scrollToRegister() {
   }
   .save__media {
     order: -1;
-    min-height: 200px;
   }
 }
 
 @media (max-width: 640px) {
   .save__card {
-    padding: 22px;
+    padding: 20px;
     border-radius: var(--radius-md);
+  }
+  .save__text h2 {
+    font-size: 28px;
+  }
+  .save__text p {
+    font-size: 15px;
   }
 }
 </style>

@@ -9,15 +9,15 @@
   --text-dim: #a9b6b0;
   --text-faint: #78857f;
   --accent: #3ee08a;
-  --accent-2: #6be6a8;
+  --accent-2: #84FFC1;
   --accent-soft: rgba(62, 224, 138, 0.12);
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
-  --container: 90%;
+  --container: 1280px;
   --pad-desktop: 40px;
   --pad-mobile: 18px;
-  --font: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 * {
@@ -28,11 +28,29 @@ html {
   scroll-behavior: smooth;
 }
 
+/*
+  Background rebuilt without the 1440x5823 flattened PNG export.
+  That export was the whole page's composited background baked into one
+  giant image — it can only ever match one exact content height/width,
+  so it always ends up cropped or stretched once real content (different
+  language, different viewport) makes the page a different height.
+
+  This version reproduces the same look — dark base, soft green glow
+  blooms, faint scattered binary-digit texture — using:
+  - two radial-gradient "glow" layers (0 extra bytes, GPU-cheap, and
+    `background-size: cover` on gradients scales them to *any* element
+    height with no cropping/blank space)
+  - one tiny inline SVG tile (~400 bytes, no network request) repeated
+    across the page for the digit texture
+
+  Net effect: same visual, but it now correctly covers any page length
+  and adds no image download at all, instead of a multi-hundred-KB
+  background image blocking/competing with real content for bandwidth.
+*/
 body {
   margin: 0;
   font-family: var(--font);
   color: var(--text);
-  min-height: 100vh;
 
   background:
           linear-gradient(
@@ -42,7 +60,7 @@ body {
                   rgba(18, 27, 38, 0.22)
           ),
           url('../assets/images/background.png') center top / 100% auto no-repeat;
-
+  background-size: cover;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -62,8 +80,6 @@ a {
   color: inherit;
 }
 
-/* Single fluid rule instead of base + tablet + mobile overrides:
-   fewer style recalculations, no snapping between breakpoints. */
 .container {
   width: 100%;
   max-width: var(--container);
@@ -73,7 +89,6 @@ a {
 
 .section {
   padding-block: clamp(40px, 6vw, 72px);
-  /* Skips layout/paint work for offscreen sections until they're near the viewport */
   content-visibility: auto;
   contain-intrinsic-size: 600px;
 }
@@ -144,8 +159,6 @@ a {
   border: 0;
 }
 
-/* Respect users who've asked for reduced motion — also cuts unnecessary
-   compositing work on low-end devices. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

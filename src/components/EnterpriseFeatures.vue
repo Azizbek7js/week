@@ -1,4 +1,14 @@
 <script setup>
+import Sandbox from '../assets/images/Sandbox.svg'
+import exchange from '../assets/images/currency-exchange.svg'
+import taxRefund from '../assets/images/tax-refund.svg'
+import fileFolder from '../assets/images/file-folder.svg'
+import databaseConnection from '../assets/images/database-connection.svg'
+import Government from '../assets/images/services.svg'
+import digitalBrain from '../assets/images/digital-brain.svg'
+import earningsReport from '../assets/images/earnings-report.svg'
+import globalNetwork from '../assets/images/global-network.svg'
+
 const features = [
   { title: 'Regulatory Sandbox', desc: 'Legally protected testing environment for new business models and frontier technologies.' },
   { title: 'Foreign exchange freedom', desc: 'Foreign currency operations, payroll, and capital flows without conversion mandates.' },

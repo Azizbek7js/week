@@ -1,4 +1,17 @@
 <script setup>
+import FreeOfficeIcon from '../assets/images/FreeOffice.svg'
+import Technical from '../assets/images/Technical.svg'
+import farmImage from '../assets/images/farmImage.svg'
+import RegistrationIcon from '../assets/images/Registration.svg'
+import Banking from '../assets/images/Banking.svg'
+import Turnkey from '../assets/images/Turnkey.svg'
+import Talent from '../assets/images/Talent.svg'
+import ITVISALOGO from '../assets/images/it-visa.svg'
+import noWork from '../assets/images/noWork.svg'
+import salary from '../assets/images/salary.svg'
+import Dividends from '../assets/images/Dividends.svg'
+import datavoltlogo from '../assets/images/datavoltlogo.png'
+
 const benefits = [
   { label: 'CORPORATE TAXES', value: '0%' },
   { label: 'SOCIAL TAX', value: '0%' },

@@ -1,52 +1,151 @@
 <script setup>
+import { computed } from 'vue'
+
+// Confident name-matches (file name clearly maps to the brand):
+import Plug from '../assets/images/Plug.svg'
+import Mit from '../assets/images/Mit.svg'
+import Google from '../assets/images/Google.svg'
+import Aws from '../assets/images/aws.svg'
+import Dealroom from '../assets/images/Dealroom.svg'
+import Domino from '../assets/images/domino.svg'
+import Accesa from '../assets/images/Accesa.svg'
+import Salesforce from '../assets/images/Salesforce.svg'
+import ey from '../assets/images/ey.svg'
+import GLOBAL from '../assets/images/GLOBAL.svg'
+import gbtp from '../assets/images/gbtp.svg'
+import polyavalent from '../assets/images/polyavalent.svg'
+
+// Generic Figma export names — best-guess mapping, please verify these four:
+import Group from '../assets/images/Group.svg' // guessed: web summit
+import Startup from '../assets/images/Startup.svg' // guessed: StartupBlink
+import Container from '../assets/images/Container.svg' // guessed: Startup Genome
+import svgexport from '../assets/images/svgexport.svg' // guessed: Sturgeon Capital
+
+// NOTE: no imported file for "Alchemist Accelerator", "Golden Gate Ventures",
+// "SPS Commerce" — export these three from Figma and add them below to
+// replace their text-fallback cards.
 const logos = [
-  'web summit', 'Plug and Play', 'MIT', 'Google for Startups', 'AWS',
-  'Alchemist Accelerator', 'dealroom.co', 'StartupBlink', 'DOMINO', 'Startup Genome',
-  'accesa', 'Sturgeon Capital', 'salesforce.org', 'EY', 'Global Startup Awards',
-  'GBTP', 'Polyvalent', 'Golden Gate Ventures', 'SPS Commerce'
+  { name: 'web summit', src: Group },
+  { name: 'Plug and Play', src: Plug },
+  { name: 'MIT', src: Mit },
+  { name: 'Google for Startups', src: Google },
+  { name: 'AWS', src: Aws },
+  { name: 'Alchemist Accelerator', src: null },
+  { name: 'dealroom.co', src: Dealroom },
+  { name: 'StartupBlink', src: Startup },
+  { name: 'DOMINO', src: Domino },
+  { name: 'Startup Genome', src: Container },
+  { name: 'accesa', src: Accesa },
+  { name: 'Sturgeon Capital', src: svgexport },
+  { name: 'salesforce.org', src: Salesforce },
+  { name: 'EY', src: ey },
+  { name: 'Global Startup Awards', src: GLOBAL },
+  { name: 'GBTP', src: gbtp },
+  { name: 'Polyvalent', src: polyavalent },
+  { name: 'Golden Gate Ventures', src: null },
+  { name: 'SPS Commerce', src: null }
 ]
+
+// Split into rows of 5, so the final (partial) row can be laid out on its
+// own grid and stretch to fill the full width instead of leaving empty
+// columns on the right — grid auto-placement alone can't do that.
+const ROW_SIZE = 5
+const rows = computed(() => {
+  const chunks = []
+  for (let i = 0; i < logos.length; i += ROW_SIZE) {
+    chunks.push(logos.slice(i, i + ROW_SIZE))
+  }
+  return chunks
+})
 </script>
 
 <template>
   <section class="section attendees">
     <div class="container">
-      <h2 class="attendees__title">Past Attendees Include</h2>
-      <ul class="attendees__grid">
-        <li v-for="logo in logos" :key="logo" class="attendees__logo">
-          {{ logo }}
-        </li>
-      </ul>
+      <div class="attendees__panel">
+        <h2 class="attendees__title">Past Attendees Include</h2>
+        <div class="attendees__rows">
+          <ul
+              v-for="(row, i) in rows"
+              :key="i"
+              class="attendees__grid"
+              :style="{ '--cols': row.length }"
+          >
+            <li v-for="logo in row" :key="logo.name" class="attendees__logo">
+              <img
+                  v-if="logo.src"
+                  :src="logo.src"
+                  :alt="logo.name"
+                  loading="lazy"
+                  decoding="async"
+                  width="120"
+                  height="32"
+              />
+              <span v-else>{{ logo.name }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.attendees {
-  background: radial-gradient(60% 60% at 50% 0%, rgba(62, 224, 138, 0.08), transparent 70%);
+.attendees__panel {
+  background: #121b2666;
+  border-radius: 24px;
+  padding: 36px 56px 56px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
 }
 .attendees__title {
+  font-family: 'Manrope', sans-serif;
   text-align: center;
-  font-size: 32px;
-  margin: 0 0 32px;
+  font-size: 48px;
+  font-weight: 700;
+  font-style: normal;
+  margin: 0;
 }
+
+.attendees__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Each row is its own grid with exactly as many columns as it has items,
+   so a shorter last row (e.g. 4 items) stretches across the full width
+   instead of sitting in 4 of 5 columns with a gap on the right. */
 .attendees__grid {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(var(--cols), 1fr);
   gap: 16px;
 }
 .attendees__logo {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.01);
   min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
+}
+.attendees__logo img {
+  max-width: 100%;
+  max-height: 67px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+.attendees__logo span {
   font-weight: 700;
   font-size: 13px;
   color: var(--text-dim);
@@ -55,12 +154,32 @@ const logos = [
 }
 
 @media (max-width: 1024px) {
+  .attendees__panel {
+    padding: 28px;
+    gap: 32px;
+  }
+  /* On tablet/mobile, row-based columns would create awkward uneven
+     widths (e.g. a 4-wide row next to 3-wide rows). Collapse back to a
+     single uniform grid instead. */
+  .attendees__rows {
+    display: contents;
+  }
   .attendees__grid {
+    display: contents;
+  }
+  .attendees__panel > .attendees__rows {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 }
 @media (max-width: 640px) {
-  .attendees__grid {
+  .attendees__panel {
+    padding: 20px;
+    gap: 24px;
+    border-radius: var(--radius-md);
+  }
+  .attendees__panel > .attendees__rows {
     grid-template-columns: repeat(2, 1fr);
   }
   .attendees__title {
